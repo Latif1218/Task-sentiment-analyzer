@@ -18,5 +18,3 @@ venv/
 .idea/
 
 # Models / Data (optional)
-*.pkl
-*.csv
