@@ -1,206 +1,70 @@
-## 📖 Project Overview Task Sentiment Analyzer is a **machine learning and NLP-based project** that performs sentiment analysis on text data, classifying comments as **Positive** or **Negative**. The project explores multiple models, including traditional machine learning algorithms and deep learning, using IMDb movie reviews data for training. The final deployed model uses **Logistic Regression** for robust performance and is accessible via an interactive **Streamlit web app**. --- ## 🧩 Dataset The project uses the **IMDb Movie Reviews Dataset**: - **Source:** [Kaggle](https://www.kaggle.com/datasets/mantri7/imdb-movie-reviews-dataset) - **Initial file used:** train_data (1).csv - **Cleaned & preprocessed dataset:** reddit_preprocessing.csv ### 🧹 Data Preprocessing Steps 1. **Load Dataset**
-python
+# Task Sentiment Analyzer
+
+## 📖 Project Overview
+**Task Sentiment Analyzer** is a **Machine Learning and NLP-based project** that performs **sentiment analysis** on text data. The goal is to classify comments as **Positive** or **Negative**. The project explores multiple algorithms, including **traditional machine learning**, **ensemble models**, and **deep learning**, using the **IMDb Movie Reviews dataset** for training.  
+
+The final deployed model uses **Logistic Regression** for simplicity, robustness, and high accuracy, accessible via an **interactive Streamlit web app**.
+
+---
+
+## 🧩 Dataset
+The project uses the **IMDb Movie Reviews Dataset**:  
+- **Source:** [Kaggle](https://www.kaggle.com/datasets/mantri7/imdb-movie-reviews-dataset)  
+- **Initial file:** `train_data (1).csv`  
+- **Cleaned dataset:** `reddit_preprocessing.csv`  
+
+---
+
+## 🧹 Data Preprocessing & EDA
+All work started in **Jupyter Notebooks**. The workflow was:
+
+1. **Load raw dataset** in the first notebook:  
+```python
 df = pd.read_csv('train_data (1).csv')
 
-
-ai tuko jmn kore likco thik tmn kore bad baki puro ta o same vabe likhe daw
-
-Clean Text Using NLP Preprocessing
-
-Remove HTML tags
-
-Remove non-alphabetic characters
-
-Convert to lowercase
-
-Remove stopwords
-
-Save Cleaned Dataset
-The cleaned dataset is saved as reddit_preprocessing.csv for further experiments.
-
-Exploratory Data Analysis (EDA)
-
-Understand class distributions
-
-Explore text patterns and word frequencies
-
-🧪 Experiments
-
-The project follows a systematic approach to model evaluation, covering multiple experiments:
-
-1️⃣ Bag-of-Words & TF-IDF Experiments
-
-Notebooks:
-
-3_experiment_2_bow_tfidf_1.ipynb
-
-3_experiment_2_bow_tfidf.ipynb
-
-4_experiment_3_tfidf_(1,3)_max_features.ipynb
-
-5_experiment_4_handling_imbalanced_data.ipynb
-
-Best Result (Logistic Regression):
-
-Accuracy: 0.8940
-
-Precision: 0.8940
-
-Recall: 0.8940
-
-F1-score: 0.8940
-
-Best Parameters: {'solver': 'lbfgs', 'max_iter': 300, 'C': 10}
-
-2️⃣ Naive Bayes with Hyperparameter Tuning
-
-Notebook: 6_experiment_5_Naive Bayes_with_hpt.ipynb
-
-Result:
-
-Accuracy: 0.8711
-
-Precision: 0.8713
-
-Recall: 0.8711
-
-F1-score: 0.8711
-
-3️⃣ XGBoost
-
-Notebook: 7_experiment_5_xgboost_with_hpt.ipynb
-
-Result:
-
-Best Accuracy: 0.8514
-
-Best Parameters: {'n_estimators': 150, 'learning_rate': 0.09, 'max_depth': 9, ...}
-
-4️⃣ LightGBM
-
-Notebook: 7_experiment_6_lightgbm_detailed_hpt.ipynb
-
-Result: Accuracy = 0.8767
-
-5️⃣ Random Forest
-
-Notebook: 7_experiment_6_RandomForest_detailed_hpt.ipynb
-
-Result: Accuracy = 0.8554
-
-6️⃣ Deep Learning (LSTM)
-
-Notebook: 7_experiment_6_Using_Deep_Learning_LSTM_with_hptn.ipynb
-
-Result:
-
-Accuracy: 0.8573
-
-Precision: 0.8732
-
-Recall: 0.8365
-
-F1-score: 0.8545
-
-7️⃣ Stacking Classifier
-
-Notebook: 8_Staking.ipynb
-
-Base learners: XGBoost, LightGBM, Random Forest, Naive Bayes, Logistic Regression
-
-Result: Accuracy = 0.8980
-
-🏆 Model Selection & Deployment
-
-After thorough experiments, Logistic Regression and Stacking gave the best results. For simplicity and reliability, Logistic Regression was selected for deployment.
-
-Saved Models
-
-logreg_model.pkl
-
-vectorizer_model.pkl
-
-Web App Deployment
-
-Framework: Streamlit
-
-Local URL: http://localhost:8501
-
-Features:
-
-User-friendly interface
-
-Real-time sentiment prediction
-
-Displays confidence percentage
-
-Supports text input via text area
-
-📁 Repository Structure
-/Task-sentiment-analyzer
-│
-├── /Notebook                   # All Jupyter notebooks
-│   ├── 1_data_preprocessing.ipynb
-│   ├── 3_experiment_2_bow_tfidf.ipynb
-│   ├── 3_experiment_2_bow_tfidf_1.ipynb
-│   ├── 4_experiment_3_tfidf_(1,3)_max_features.ipynb
-│   ├── 5_experiment_4_handling_imbalanced_data.ipynb
-│   ├── 6_experiment_5_Naive Bayes_with_hpt.ipynb
-│   ├── 7_experiment_5_xgboost_with_hpt.ipynb
-│   ├── 7_experiment_6_lightgbm_detailed_hpt.ipynb
-│   ├── 7_experiment_6_RandomForest_detailed_hpt.ipynb
-│   ├── 7_experiment_6_Using_Deep_Learning_LSTM_with_hptn.ipynb
-│   └── 8_Staking.ipynb
-│
-├── /Notebook/Models             # Saved trained models
-│   ├── logreg_model.pkl
-│   ├── stacking_model.pkl
-│   └── vectorizer_model.pkl
-│
-├── reddit_preprocessing.csv     # Cleaned dataset
-├── app.py                       # Streamlit deployment code
-├── requirements.txt             # Dependencies
-└── README.md                    # Project documentation
-
-⚡ How to Use
-1️⃣ Clone the repository
-git clone https://github.com/Latif1218/Task-sentiment-analyzer.git
-cd Task-sentiment-analyzer
-
-2️⃣ Create a virtual environment and install dependencies
-python -m venv env
-.\env\Scripts\activate  # Windows
-pip install -r requirements.txt
-
-3️⃣ Run the Streamlit app
-streamlit run app.py
-
-
-Open your browser at http://localhost:8501 to access the sentiment analyzer.
-
-📊 Key Takeaways
-
-Preprocessing and EDA are critical for robust NLP modeling.
-
-Logistic Regression with TF-IDF achieved the best balance of simplicity and accuracy.
-
-Stacking multiple models can slightly improve performance but adds complexity.
-
-The deployed Streamlit app provides real-time sentiment analysis with confidence scoring.
-
-🧑‍💻 Contributing
-
-Contributions are welcome! Feel free to fork the repository, make changes, and submit pull requests.
-
-📄 License
-
-This project is licensed under the MIT License.
-
-
-✅ This version is **fully ready to copy** into your `README.md`. It will **render nicely on GitHub** with headings, bullets, code blocks, and proper formatting.  
-
-If you want, I can also **add a separate small section for text cleaning with a mini code snippet example**, so HTML removal, lowercase conversion, and stopword removal are visually highlighted for extra clarity.  
+2. **save clean data**
+
+df.to_csv('reddit_preprocessing.csv', index=False)
+
+## ⏱️ Timeline & Workflow Diagram
+
+```mermaid
+flowchart TD
+    A[Download Dataset from Kaggle] --> B[Load raw data in Jupyter Notebook]
+    B --> C[Data Preprocessing]
+    C --> D[Save Cleaned Dataset as reddit_preprocessing.csv]
+    D --> E[Exploratory Data Analysis (EDA)]
+    E --> F[Model Experiments]
+    F --> F1[Bag-of-Words & TF-IDF (Logistic Regression)]
+    F --> F2[Naive Bayes with HPT]
+    F --> F3[XGBoost]
+    F --> F4[LightGBM]
+    F --> F5[Random Forest]
+    F --> F6[LSTM Deep Learning]
+    F --> F7[Stacking Classifier]
+    F1 --> G[Select Best Model: Logistic Regression]
+    F7 --> G
+    G --> H[Save Models: logreg_model.pkl & vectorizer_model.pkl]
+    H --> I[Deploy using Streamlit]
+    I --> J[Real-time Sentiment Analysis App]
+
+
+### How it works:
+1. **Dataset** is downloaded from Kaggle.  
+2. **Jupyter Notebook** is used to load and inspect raw data.  
+3. **Data Preprocessing**: HTML removal, lowercase conversion, stopword removal, etc.  
+4. **Cleaned data** is saved as `reddit_preprocessing.csv`.  
+5. **EDA** provides understanding of data distributions and patterns.  
+6. **Model Experiments** test multiple algorithms (Logistic Regression, Naive Bayes, XGBoost, LightGBM, Random Forest, LSTM, Stacking).  
+7. **Model Selection** chooses Logistic Regression for deployment.  
+8. **Models are saved**, and **Streamlit app** is deployed for real-time predictions.
+
+---
+
+✅ This diagram gives a **clear high-level view** of your workflow from dataset download to final deployment.
+
+---
+
+If you want, I can **integrate this directly into your previous README** with all sections combined, so you’ll have a **complete polished document** ready to submit or push to GitHub.  
 
 Do you want me to do that?
-
-puro ak shate lune by line na akbare akshate
