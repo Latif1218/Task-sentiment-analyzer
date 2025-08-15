@@ -26,6 +26,16 @@ df = pd.read_csv('train_data (1).csv')
 
 df.to_csv('reddit_preprocessing.csv', index=False)
 
+**Tools and Libraries Used:**
+- Python (Pandas, NumPy, re) for data handling and preprocessing
+- NLTK for stopword removal
+- Scikit-learn (Logistic Regression, Naive Bayes, Random Forest, XGBoost, LightGBM, Stacking Classifier) for model training and evaluation
+- TF-IDF Vectorizer for text feature extraction
+- Keras (for optional Deep Learning / LSTM model)
+- Matplotlib and Seaborn for data visualization and confusion matrix
+- Joblib for saving trained models as `.pkl` files
+- Streamlit for deploying the web application
+
 ## ⏱️ Timeline & Workflow Diagram
 
 ```mermaid
@@ -61,7 +71,7 @@ flowchart TD
 
 ---
 
-✅ This diagram gives a **clear high-level view** of your workflow from dataset download to final deployment.
+ This diagram gives a **clear high-level view** of your workflow from dataset download to final deployment.
 
 ---
 
