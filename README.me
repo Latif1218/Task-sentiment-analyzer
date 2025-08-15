@@ -26,6 +26,10 @@ df = pd.read_csv('train_data (1).csv')
 
 df.to_csv('reddit_preprocessing.csv', index=False)
 
+i am changing the featur namm like tjis:
+df.rename(columns={'0': 'clean_comment'}, inplace=True)
+df.rename(columns={'1': 'category'}, inplace=True)
+
 **Tools and Libraries Used:**
 - Python (Pandas, NumPy, re) for data handling and preprocessing
 - NLTK for stopword removal
