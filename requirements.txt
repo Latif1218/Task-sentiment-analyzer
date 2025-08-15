@@ -1,0 +1,7 @@
+streamlit
+joblib
+pickle-mixin
+numpy
+nltk
+tensorflow
+scikit-learn
